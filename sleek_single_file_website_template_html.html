@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StuThe — Modern, Minimal Landing Page</title>
+  <meta name="description" content="A clean, responsive single‑file website template for products, portfolios, or small businesses." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="favicon.ico" />
+  <meta property="og:title" content="StuThe — Modern, Minimal Landing Page" />
+  <meta property="og:description" content="A clean, responsive single‑file website template for products, portfolios, or small businesses." />
+  <meta property="og:type" content="website" />
+  <style>
+    /* =============== CSS VARIABLES =============== */
+    :root {
+      --bg: #0b1020;           /* deep navy background */
+      --card: #151b2f;         /* slightly lighter card background */
+      --muted: #b8c2cc;        /* muted grey-blue for text */
+      --text: #fffaf1;         /* soft white text */
+      --brand: #ffd23f;        /* bright yellow accent */
+      --brand-2: #ff9500;      /* warm orange accent */
+      --accent-purple: #b388eb;
+      --accent-pink: #f78da7;
+      --accent-green: #7ed957;
+      --accent-blue: #39b6ff;
+      --ring: rgba(255, 210, 63, 0.4);
+      --max: 1100px;
+      --radius: 16px;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #fffaf5;
+        --card: #fff4e0;
+        --muted: #7a6a5d;
+        --text: #241a07;
+        --brand: #ffb703;
+        --brand-2: #fb8500;
+        --accent-purple: #b388eb;
+        --accent-pink: #f78da7;
+        --accent-green: #7ed957;
+        --accent-blue: #39b6ff;
+        --ring: rgba(255,183,3,.25);
+      }
+    }
+
+
+    /* =============== RESET / BASE =============== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin-inline:auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1020;font-weight:700;box-shadow:var(--shadow);border:0}
+    .btn.secondary{background:#0000;border:1px solid rgba(148,163,184,.3);color:var(--text)}
+    .btn:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(148,163,184,.25);padding:.3rem .6rem;border-radius:999px;color:var(--muted);font-weight:600}
+    .grid{display:grid;gap:1.25rem}
+    .card{background:var(--card);border:1px solid rgba(148,163,184,.16);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* =============== HEADER / NAV =============== */
+    header{position:sticky;top:0;backdrop-filter:saturate(150%) blur(8px);background:color-mix(in oklab, var(--bg) 85%, transparent);z-index:50;border-bottom:1px solid rgba(148,163,184,.12)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:900;letter-spacing:.4px}
+    .brand .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    nav ul{display:flex;gap:1rem;align-items:center;list-style:none;margin:0;padding:0}
+    nav a{padding:.55rem .8rem;border-radius:10px;color:var(--muted)}
+    nav a:hover{background:rgba(148,163,184,.12);color:var(--text)}
+    .nav-cta{display:none}
+    .menu{display:none}
+
+    /* =============== HERO =============== */
+    .hero{padding:80px 0 40px}
+    .hero .wrap{display:grid;gap:2rem;grid-template-columns: 1.1fr .9fr;align-items:center}
+    h1{font-size:clamp(2rem, 2.8vw + 1rem, 3.4rem);line-height:1.1;margin:0}
+    .lead{font-size:1.125rem;color:var(--muted);max-width:55ch}
+    .hero-img{aspect-ratio:4/3;background:linear-gradient(135deg,rgba(110,231,183,.15),rgba(56,189,248,.15));border:1px dashed rgba(148,163,184,.35);border-radius:calc(var(--radius) + 6px);display:grid;place-items:center;color:var(--muted)}
+
+    /* =============== SECTIONS =============== */
+    section{padding:56px 0}
+    .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .section-head h2{font-size:clamp(1.5rem,1.4vw + 1rem,2.2rem);margin:0}
+    .muted{color:var(--muted)}
+
+    /* Features */
+    .features{grid-template-columns:repeat(2,1fr)}
+    .feature{padding:22px}
+    .feature h3{margin:.2rem 0 .3rem;font-size:1.1rem}
+    @media (max-width: 768px) {
+  .features { grid-template-columns: 1fr; }
+  }
+
+    /* Showcase */
+    .showcase{grid-template-columns:repeat(3,1fr)}
+    .shot{overflow:hidden}
+    .shot img{border-radius:14px;aspect-ratio:4/3;object-fit:cover}
+
+    /* Pricing */
+    .pricing{grid-template-columns:repeat(2,1fr)}
+    .price-card{padding:26px}
+    .price{font-size:2rem;font-weight:800}
+
+    /* FAQ */
+    .faq details{border:1px solid rgba(148,163,184,.2);border-radius:12px;padding:14px 16px;background:var(--card)}
+    .faq details[open]{outline:2px solid rgba(148,163,184,.2)}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq .a{color:var(--muted)}
+
+
+
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{background:var(--card);border:1px solid rgba(148,163,184,.25);color:var(--text);padding:.9rem 1rem;border-radius:12px}
+    input:focus,textarea:focus{outline:3px solid var(--ring);border-color:transparent}
+
+    /* Footer */
+    footer{padding:40px 0;border-top:1px solid rgba(148,163,184,.12);color:var(--muted)}
+
+      .footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logos img {
+    height: 70px;
+    max-width: 140px;
+    object-fit: contain;
+    opacity: 0.9;
+    filter: grayscale(40%);
+    transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .footer-logos img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: var(--max);
+  }
+
+
+
+
+    /* =============== RESPONSIVE =============== */
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr}
+      .features,.showcase,.pricing{grid-template-columns:1fr 1fr}
+      .nav-cta{display:none}
+    }
+    @media (max-width: 680px){
+      nav ul{display:none}
+      .menu{display:inline-flex}
+      .features,.showcase,.pricing{grid-template-columns:1fr}
+      .section-head{flex-direction:column;gap:.75rem;align-items:flex-start}
+      .nav-cta{display:none}
+    }
+
+    /* =============== SMALL ANIMS =============== */
+    .fade-in{opacity:0;transform:translateY(6px);animation:fade .6s .05s both}
+    .fade-in.delay{animation-delay:.2s}
+    @keyframes fade{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <!-- =============== HEADER =============== -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="StuThe home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>StuThe</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#features">Wieso Impro?</a></li>
+          <li><a href="#faq">Oft gefragt</a></li>
+          <li><a href="#work">Bilder</a></li>
+          <li><a href="#pricing">Anmelden</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn secondary" href="#contact">Get in touch</a>
+      </div>
+      <button class="menu btn secondary" aria-controls="mobile" aria-expanded="false">Menu</button>
+    </div>
+    <div id="mobile" hidden>
+      <div class="container" style="padding-bottom:12px">
+        <nav aria-label="Mobile">
+          <ul style="display:grid;gap:.5rem;margin:0;padding:0;list-style:none">
+            <li><a href="#features">Wieso Impro?</a></li>
+            <li><a href="#work">Bilder</a></li>
+            <li><a href="#pricing">Anmelden</a></li>
+            <li><a href="#faq">Oft gefragt</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== HERO =============== -->
+  <main id="top" class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="pill fade-in">✨ 2025 neu gestartet</span>
+        <h1 class="fade-in">Impro Abende.
+        </h1>
+        <p class="lead fade-in delay">Die offizielle Webseite der Impro Abende der Theatervereine der Universität Zürich und ETH. Ein Projekt von Studierenden Theater Zürich und akitiv Theaterverein.</p>
+        <div style="display:flex;gap:.8rem;margin-top:1rem" class="fade-in delay">
+          <a class="btn" href="#pricing">Anmelden</a>
+          <a class="btn secondary" href="#work">Bilder</a>
+        </div>
+      </div>
+      <div class="hero-img fade-in">
+        <img src="flyer_impro_final.jpg" alt="Impro night at StuThe" style="border-radius:inherit; width:100%; height:auto; object-fit:cover;">
+      </div>
+    </div>
+  </main>
+
+  <!-- =============== FEATURES =============== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <h2>Wieso sollst du Impro machen?</h2>
+        <p class="muted">Opinionated defaults. Easy to adapt.</p>
+      </div>
+      <div class="grid features">
+        <article class="card feature">
+          <h3>Mehr Kreativität & kognitive Flexibilität</h3>
+          <p class="muted">Improvisation trainiert das flexible Denken und die Fähigkeit, spontan neue Ideen zu generieren.</p>
+            <a 
+              href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6167459"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size: 0.9em; text-decoration: underline; color: #666;"
+            >
+              Quelle
+            </a>
+        </article>
+        <article class="card feature">
+          <h3>Verbesserung von Selbstwertgefühl & Selbstwirksamkeit</h3>
+          <p class="muted">Menschen, die mit Impro anfingen, zeigten über die Zeit größere Zuwächse in Selbstwert (self-esteem) und Selbstwirksamkeit (self-efficacy) im Vergleich zu einer Kontrollgruppe.</p>
+            <a 
+              href="https://www.sciencedirect.com/science/article/pii/S1871187125000069"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size: 0.9em; text-decoration: underline; color: #666;"
+            >
+              Quelle
+            </a>
+        </article>
+        <article class="card feature">
+          <h3>Stärkt soziale Verbundenheit und Empathie</h3>
+          <p class="muted">Impro steigert Perspektivübernahme und senkt persönlichen Leidensdruck, da es aktives Zuhören, Spontaneität und Einfühlung fördert.</p>
+            <a 
+              href="https://bmcmededuc.biomedcentral.com/articles/10.1186/s12909-024-06017-6"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size: 0.9em; text-decoration: underline; color: #666;"
+            >
+              Quelle
+            </a>
+        </article>
+        <article class="card feature">
+          <h3>Fördert psychisches Wohlbefinden</h3>
+          <p class="muted">Teilnehmende von Impro zeigten Verbesserungen im Wohlbefinden, sowie mehr Lebenszufriedenheit und weniger psychische Belastung</p>
+            <a 
+              href="researchgate.net/publication/340843426_Improv_to_Improve_The_Impact_of_Improvisational_Theater_on_Creativity_Acceptance_and_Psychological_Well-Being"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size: 0.9em; text-decoration: underline; color: #666;"
+            >
+              Quelle
+            </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- =============== FAQ =============== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <h2>Oft gefragt</h2>
+        <p class="muted">Schnelle Antworten zu häufigen Fragen.</p>
+      </div>
+      <div class="grid faq" style="grid-template-columns:1fr 1fr">
+        <details>
+          <summary>Brauche ich Vorkenntnisse? Kostet es Geld?</summary>
+          <div class="a">Nein. Impro ist super gerade auch für Anfänger*innen. Aber Impro ist auch training und es wird besser und leichter über die Zeit. Du darfst dich anfangs auch etwas zurücknehmen und wirst nicht gleich ins kalte Wasser geschmissen.
+            Das Impro ist völlig gratis und basiert auf freiwilligem Engagement.
+          </div>
+        </details>
+        <details>
+          <summary>Ich will kommen, aber traue mich nicht ganz?</summary>
+          <div class="a">Da waren wir alle mal. Zum Glück sind Impro-Spielende super offen und kommen meistens auch alleine. Durch das Impro wird das Eis sehr schnell gebrochen. Trau dich, es lohnt sich!</div>
+        </details>
+        <details>
+          <summary>Was ist mit langfrisitigem Theater in der Produktion?</summary>
+          <div class="a">Impro und and der Produktion teilzunehmen lässt sich sehr gut vereinbaren. Proben, um an der Produktion teilzunehmen sind im Januar/Februar jährlich. 
+            Hier soll man aber vobereitet sein, viel zu investieren und zu committen. Impro ist dagegen eher ein Ausgleich, es geht um Spass ohne Druck.
+          </div>
+        </details>
+        <details>
+          <summary>Wer leitet? Kann ich auch leiten?</summary>
+          <div class="a">Als Grundlage leiten erfahrende StuThe oder akitiv Mitglieder*innen. Aber jede*r kann und SOLL leiten!
+            Es ist wirklich keine Hexerei und nur druch gemeinsamen Effort schaffen wir es, regelmässig zu Proben. Denn unser Impro basiert auf Freiwilligenarbeit.
+            Melde dich, Im Januar/Februar für das Leiten an. Und die Daten werden im März festgelegt.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SHOWCASE =============== -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Mach dir ein Bild</h2>
+      </div>
+      <div class="grid showcase">
+        <div class="shot card"><img src="klavier.JPG" alt="Project screenshot A" loading="lazy"></div>
+        <div class="shot card"><img src="action.JPEG" alt="Project screenshot B" loading="lazy"></div>
+        <div class="shot card"><img src="wahrsager.JPEG" alt="Project screenshot B" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== PRICING =============== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <h2>Überzeugt?</h2>
+        <p class="muted">Transparent and simple. Pick what fits.</p>
+      </div>
+      <div class="grid pricing">
+        <article class="card price-card">
+          <p class="price">Spiele mit:</p>
+          <p class="muted">Melde dich direkt hier an für die Abende, die du willst:</p>
+              <img 
+                src="whatsapp_chat.png" 
+                alt="QR Code zur Anmeldung"
+                style="width: 180px; height: auto; display: block; margin: 20px auto; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25);" 
+              />
+          <div class="muted">
+            <p>komm in unsere Whatsapp-Gruppe über den QR Code oder melde dich hier an:</p>
+          </div>
+          <p><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdg6kTAu8-Nfju-8xVB8DDgqkoByTS1tOTGzxICLUI3sJZprg/viewform">Anmeldeformular</a></p>
+        </article>
+        <article class="card price-card">
+          <p class="price">Leite eine Probe:</p>
+          <p class="muted">Da wir alle studieren und dieses Projekt auf leitende Menschen angewiesen ist, hast du die Möglichkeit selbst Proben zu leiten:</p>
+              <img 
+                src="whatsapp_chat.png" 
+                alt="QR Code zur Anmeldung"
+                style="width: 180px; height: auto; display: block; margin: 20px auto; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25);" 
+              />
+          <div class="muted">
+            <p>komm in unsere Whatsapp-Gruppe über den QR Code oder siehe hier unseren Plan an:</p>
+          </div>
+          <p><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeOlez9Na46rFdgzHWDHMrk7zOTA49d4qasyVzxVN43Omn8Lg/viewform?usp=header">Anmelden fürs leiten</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+        <!-- =============== FIND US =============== -->
+    <section id="find-us">
+      <div class="container">
+        <div class="section-head">
+          <h2>Find Us</h2>
+          <p class="muted">Impro Raum ist im HPI D 8.1, Raum der Stille am Hönggerberg.        </div>
+
+        <div class="video-frame"
+            style="display: flex; justify-content: center; align-items: center; margin: 40px 0;">
+          <iframe 
+            src="https://www.google.com/maps?q=47.408274,8.508270&z=15&output=embed"
+            width="80%"
+            height="300"
+            style="border:0; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.35);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
+        </div>
+              <div class="section-head">
+                <p class="muted">
+                  Wenn man an der Haltestation ETH Hönggerberg ankommt, rechts am Coop hinter das Haus. <br>Dann in die Tür und einen Stock runter.</p>
+              </div>
+      </div>
+    </section>
+
+
+  <!-- =============== CONTACT =============== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Tell us about your project. We’ll get back to you soon.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:1.2fr .8fr;align-items:start">
+        <form class="card" onsubmit="event.preventDefault();alert('Thanks! This demo form is not wired up yet.')" aria-label="Contact form" style="padding:20px">
+          <label>
+            <span class="sr-only">Name</span>
+            <input required name="name" placeholder="Your name" autocomplete="name">
+          </label>
+          <label>
+            <span class="sr-only">Email</span>
+            <input required type="email" name="email" placeholder="you@example.com" autocomplete="email">
+          </label>
+          <label>
+            <span class="sr-only">Message</span>
+            <textarea required name="message" rows="5" placeholder="How can we help?"></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+        <aside class="card" style="padding:20px">
+          <h3>Office</h3>
+          <p class="muted">Rämistrasse 71<br>8006 Zürich, Switzerland</p>
+          <h3 style="margin-top:14px">Email</h3>
+          <p class="muted"><a href="mailto:hello@example.com">hello@example.com</a></p>
+          <h3 style="margin-top:14px">Social</h3>
+          <p class="muted"><a href="#">Instagram</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+<footer>
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center">
+    
+    <!-- Logo Row -->
+    <div class="footer-logos">
+      <img src="stuthe.png" alt="StuThe Logo">
+      <img src="akitiv.png" alt="Aktiv Theaterverein Logo">
+      <img src="vsuzh.png" alt="VSUZH Logo">
+      <img src="vseth.png" alt="VSETH Logo">
+    </div>
+
+    <!-- Footer Text -->
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> StuThe. All rights reserved.</p>
+      <p><a href="#top">Back to top ↑</a></p>
+    </div>
+
+  </div>
+</footer>
+
+
+
+  <!-- =============== SCRIPTS =============== -->
+  <script>
+    // Mobile nav toggle
+    const btn = document.querySelector('.menu');
+    const mobile = document.getElementById('mobile');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const open = mobile.hasAttribute('hidden') ? false : true;
+        mobile.toggleAttribute('hidden');
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+    // Smooth scroll for anchor links
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('a[href^="#"]');
+      if (!target) return;
+      const id = target.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        mobile && !mobile.hasAttribute('hidden') && mobile.setAttribute('hidden','');
+      }
+    });
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
