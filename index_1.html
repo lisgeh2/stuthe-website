@@ -391,59 +391,41 @@
       </div>
     </section>
 
-  <!-- =============== CALENDAR =============== -->
-  <section id="kalender">
+
+  <!-- =============== CONTACT =============== -->
+  <section id="contact">
     <div class="container">
       <div class="section-head">
-        <h2>Impro-Kalender</h2>
-        <p class="muted">Alle kommenden Impro-Abende auf einen Blick.</p>
+        <h2>Kontakt</h2>
+        <p class="muted">Dieses Kontaktformular funktioniert noch nicht!!!</p>
       </div>
-      <div style="display:flex;justify-content:center;margin:20px 0;">
-        <iframe src="https://calendar.google.com/calendar/embed?src=d7d237240f8910322d466e4e88aab6f4706dac03b057e0a441eb03caa04ce0d4%40group.calendar.google.com&ctz=Europe%2FZurich" style="border:0;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.35);max-width:100%;" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+      <div class="grid" style="grid-template-columns:1.2fr .8fr;align-items:start">
+        <form class="card" onsubmit="event.preventDefault();alert('Thanks! This demo form is not wired up yet.')" aria-label="Contact form" style="padding:20px">
+          <label>
+            <span class="sr-only">Name</span>
+            <input required name="name" placeholder="Your name" autocomplete="name">
+          </label>
+          <label>
+            <span class="sr-only">Email</span>
+            <input required type="email" name="email" placeholder="deinname@mail.com" autocomplete="email">
+          </label>
+          <label>
+            <span class="sr-only">Message</span>
+            <textarea required name="message" rows="5" placeholder="How can we help?"></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+        <aside class="card" style="padding:20px">
+          <h3>Office</h3>
+          <p class="muted">Rämistrasse 71<br>8006 Zürich, Switzerland</p>
+          <h3 style="margin-top:14px">Email</h3>
+          <p class="muted"><a href="mailto:kontakt@stuthe.ch">kontakt@stuthe.ch</a></p>
+          <h3 style="margin-top:14px">Social</h3>
+          <p class="muted"><a href="#">Instagram</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a></p>
+        </aside>
       </div>
     </div>
   </section>
-
-<!-- =============== CONTACT =============== -->
-<section id="contact">
-  <div class="container">
-    <div class="section-head">
-      <h2>Kontakt</h2>
-      <p class="muted">Schreib uns direkt eine Nachricht.</p>
-    </div>
-    <div class="grid" style="grid-template-columns:1.2fr .8fr;align-items:start">
-      <form
-        class="card"
-        action="https://formspree.io/f/xkoplzye"
-        method="POST"
-        aria-label="Contact form"
-        style="padding:20px"
-      >
-        <label>
-          <span class="sr-only">Name</span>
-          <input required name="name" placeholder="Dein Name" autocomplete="name">
-        </label>
-        <label>
-          <span class="sr-only">Email</span>
-          <input required type="email" name="email" placeholder="deinname@mail.com" autocomplete="email">
-        </label>
-        <label>
-          <span class="sr-only">Message</span>
-          <textarea required name="message" rows="5" placeholder="Wie können wir helfen?"></textarea>
-        </label>
-        <button class="btn" type="submit">Nachricht senden</button>
-      </form>
-      <aside class="card" style="padding:20px">
-        <h3>Office</h3>
-        <p class="muted">Rämistrasse 71<br>8006 Zürich, Switzerland</p>
-        <h3 style="margin-top:14px">Email</h3>
-        <p class="muted"><a href="mailto:kontakt@stuthe.ch">kontakt@stuthe.ch</a></p>
-        <h3 style="margin-top:14px">Social</h3>
-        <p class="muted"><a href="#">Instagram</a> · <a href="#">LinkedIn</a> · <a href="#">GitHub</a></p>
-      </aside>
-    </div>
-  </div>
-</section>
 
   <!-- =============== FOOTER =============== -->
 <footer>
